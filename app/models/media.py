@@ -9,5 +9,5 @@ class Media(Base):
     file_path = Column(String, nullable=False)
     note_id = Column(Integer, ForeignKey("notes.id"))
 
-    note = relationship("Notes", backref="media")
+    note = relationship("Note", backref="media")
     
