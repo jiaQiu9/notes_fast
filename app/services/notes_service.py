@@ -17,7 +17,7 @@ def create_note(db:Session, note: NoteCreate):
     return db_note
 
 def update_note(db:Session, note_id: int, note: NoteUpdate):
-    db_note = db.query(Note).filter(note.id == note_id).first
+    db_note = db.query(Note).filter(Note.id == note_id).first()
     if not db_note:
         return None
     for field, value in note.dict(exclude_unset=True).items():
