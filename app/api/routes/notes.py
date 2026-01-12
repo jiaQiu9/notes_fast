@@ -36,7 +36,7 @@ def create_note(note: NoteCreate, db:Session =Depends(get_db)):
 @router.put("/{note_id}", response_model=NoteResponse)
 def update_note(note_id: int, note: NoteUpdate, db:Session=Depends(get_db)):
     try:
-        updated,_ = notes_service.update_note(db, note_id, note)
+        updated = notes_service.update_note(db, note_id, note)
         if not updated:
             raise HTTPException(status_code=404, detail="Note not found")
         return updated
